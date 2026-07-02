@@ -1,2 +1,3 @@
-# DL_VisualStyleClassification
-This project extends the previous VisualStyleML study by moving from handcrafted visual descriptors to deep learned representations.
+# Deep Visual Style Recognition Across Domains
+
+### A deep learning study of cross-domain art-versus-photo classification

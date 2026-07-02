@@ -1,0 +1,45 @@
+bin/
+obj/
+.vs/
+.vscode/
+tf_env/
+.venv/
+
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+env/
+ds_env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Conda
+.conda/
+conda-meta/
+
+# Logs
+*.log
+
+# Cache
+.cache/
+
+*.pyo
+
+*.user
+*.suo
+*.cache
+*.dll
+*.exe
+*.pdb
+*.data
+*.settings.json
+
+data/raw/
