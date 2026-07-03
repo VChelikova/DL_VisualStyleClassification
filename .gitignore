@@ -1,45 +1,69 @@
-bin/
-obj/
+# IDE / editor files
 .vs/
 .vscode/
-tf_env/
-.venv/
+.idea/
+*.user
+*.suo
+*.settings.json
 
-# Python
+# Python cache
 __pycache__/
-*.pyc
+*.py[cod]
+*.pyo
+.pytest_cache/
+.cache/
 
 # Virtual environments
+.venv/
 venv/
 env/
-ds_env/
-
-# Jupyter
-.ipynb_checkpoints/
-
-# OS
-.DS_Store
-Thumbs.db
+tf_env/
+*.env
 
 # Conda
 .conda/
 conda-meta/
 
+
+# Jupyter
+.ipynb_checkpoints/
+
+
+# OS files
+.DS_Store
+Thumbs.db
+
+
 # Logs
 *.log
 
-# Cache
-.cache/
+# Build outputs
+bin/
+obj/
 
-*.pyo
+# Raw datasets
+data/raw/
 
-*.user
-*.suo
-*.cache
+# Generated processed data
+data/processed/*.csv
+data/processed/*.pkl
+data/processed/*.npy
+data/processed/*.npz
+
+# Model checkpoints
+models/
+*.pt
+*.pth
+*.ckpt
+
+# Generated reports and figures
+reports/assets/
+
+# Binary / compiled files
 *.dll
 *.exe
 *.pdb
 *.data
-*.settings.json
 
-data/raw/
+# Local scripts
+*.ps1
