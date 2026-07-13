@@ -118,7 +118,7 @@ PROJECT_TRAIN_ROWS_PER_GROUP = 2500
 PROJECT_VAL_ROWS_PER_GROUP = 750
 PROJECT_TEST_ROWS_PER_GROUP = 750
 
-ACTIVE_EXPERIMENT_NAMES = {"cnn_scratch_random"}
+ACTIVE_EXPERIMENT_NAMES = None
 
 REPLACE_EXISTING_EXPERIMENT_ROWS = True
 
@@ -360,23 +360,36 @@ def log_manifest_summary(df: pd.DataFrame) -> None:
 
 
 def get_active_experiments() -> list[dict]:
-    if not DEBUG_FAST_RUN:
+    if DEBUG_FAST_RUN:
+        active_experiments = [
+            experiment
+            for experiment in EXPERIMENTS
+            if experiment["experiment"] in DEBUG_EXPERIMENT_NAMES
+        ]
+
+        if not active_experiments:
+            raise ValueError(
+                "DEBUG_FAST_RUN is True, but DEBUG_EXPERIMENT_NAMES does not "
+                "match any experiment."
+            )
+
+        return active_experiments
+
+    if ACTIVE_EXPERIMENT_NAMES is None:
         return EXPERIMENTS
 
     active_experiments = [
         experiment
         for experiment in EXPERIMENTS
-        if experiment["experiment"] in DEBUG_EXPERIMENT_NAMES
+        if experiment["experiment"] in ACTIVE_EXPERIMENT_NAMES
     ]
 
     if not active_experiments:
         raise ValueError(
-            "DEBUG_FAST_RUN is True, but DEBUG_EXPERIMENT_NAMES does not "
-            "match any experiment."
+            "ACTIVE_EXPERIMENT_NAMES does not match any experiment."
         )
 
     return active_experiments
-
 
 def get_active_max_epochs() -> int:
     if DEBUG_FAST_RUN:

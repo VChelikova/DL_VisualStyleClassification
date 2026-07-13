@@ -67,3 +67,28 @@ reports/assets/
 
 # Local scripts
 *.ps1
+
+# Keep selected processed CSV outputs required by the notebook
+!data/processed/dataset_manifest.csv
+!data/processed/dataset_manifest_summary.csv
+
+!data/processed/metadata_features.csv
+!data/processed/metadata_bias_results.csv
+!data/processed/metadata_bias_feature_importance.csv
+
+!data/processed/cnn_scratch_results.csv
+!data/processed/cnn_scratch_history.csv
+!data/processed/cnn_scratch_predictions.csv
+
+# Keep selected generated report figures required by the notebook
+!reports/
+!reports/assets/
+!reports/assets/cnn_scratch/
+!reports/assets/cnn_scratch/cnn_scratch_metric_comparison.png
+!reports/assets/cnn_scratch/cnn_scratch_validation_auc_curves.png
+!reports/assets/cnn_scratch/cnn_scratch_validation_loss_curves.png
+!reports/assets/cnn_scratch/cnn_scratch_confusion_matrices.png
+
+# Keep one small checkpoint for notebook inference demo
+!models/
+!models/cnn_scratch_random_best.pt
