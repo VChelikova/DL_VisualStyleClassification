@@ -145,6 +145,11 @@ EXPERIMENTS = [
         "split_column": "split_cross_b",
         "checkpoint_name": "cnn_scratch_cross_b_best.pt",
     },
+    {
+        "experiment": "cnn_scratch_artist",
+        "split_column": "split_artist",
+        "checkpoint_name": "cnn_scratch_artist_best.pt",
+    },
 ]
 
 REQUIRED_MANIFEST_COLUMNS = {
@@ -155,12 +160,14 @@ REQUIRED_MANIFEST_COLUMNS = {
     "split_random",
     "split_cross_a",
     "split_cross_b",
+    "split_artist",
 }
 
 SPLIT_COLUMNS = [
     "split_random",
     "split_cross_a",
     "split_cross_b",
+    "split_artist",
 ]
 
 

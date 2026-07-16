@@ -2,7 +2,7 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import GroupShuffleSplit, train_test_split
 
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -80,6 +80,25 @@ def detect_artbench_metadata(path: Path) -> tuple[str | None, str | None]:
 
     return original_split, original_style
 
+def extract_artist(path: Path, source_dataset: str) -> str | None:
+    """Extract the artist identifier from the filename.
+
+    WikiArt and ArtBench filenames follow the pattern
+    '<artist-name>_<title>.jpg'. Photo sources have no artist, so None
+    is returned. If a filename contains no underscore, the full stem is
+    used as a conservative fallback group, so the image can never leak
+    across splits.
+    """
+    if source_dataset not in {"wikiart", "artbench"}:
+        return None
+
+    stem = path.stem.lower()
+    artist = stem.split("_")[0].strip()
+
+    if not artist:
+        return stem
+
+    return artist
 
 def build_records(
     paths: list[Path],
@@ -104,6 +123,7 @@ def build_records(
                 "source_dataset": source_dataset,
                 "original_split": original_split,
                 "original_style": original_style,
+                "artist": extract_artist(path, source_dataset),
             }
         )
 
@@ -187,6 +207,75 @@ def assign_cross_splits(df: pd.DataFrame) -> pd.DataFrame:
 
     return df
 
+def assign_artist_split(df: pd.DataFrame) -> pd.DataFrame:
+    """Artist-disjoint random split.
+
+    Art images are grouped by artist so that no artist appears in more
+    than one of train/val/test. Photo images have no artist and follow
+    the same stratified 70/15/15 procedure as the random split.
+    """
+    df = df.copy()
+    df["split_artist"] = None
+
+    art_df = df[df["class_name"] == "art"]
+    photo_df = df[df["class_name"] == "photo"]
+
+    gss_outer = GroupShuffleSplit(
+        n_splits=1,
+        test_size=0.30,
+        random_state=RANDOM_STATE,
+    )
+    train_idx, temp_idx = next(
+        gss_outer.split(art_df, groups=art_df["artist"])
+    )
+    art_train = art_df.iloc[train_idx]
+    art_temp = art_df.iloc[temp_idx]
+
+    gss_inner = GroupShuffleSplit(
+        n_splits=1,
+        test_size=0.50,
+        random_state=RANDOM_STATE,
+    )
+    val_idx, test_idx = next(
+        gss_inner.split(art_temp, groups=art_temp["artist"])
+    )
+    art_val = art_temp.iloc[val_idx]
+    art_test = art_temp.iloc[test_idx]
+
+    photo_train, photo_temp = train_test_split(
+        photo_df,
+        test_size=0.30,
+        stratify=make_stratify_key(photo_df),
+        random_state=RANDOM_STATE,
+    )
+    photo_val, photo_test = train_test_split(
+        photo_temp,
+        test_size=0.50,
+        stratify=make_stratify_key(photo_temp),
+        random_state=RANDOM_STATE,
+    )
+
+    df.loc[art_train.index, "split_artist"] = "train"
+    df.loc[art_val.index, "split_artist"] = "val"
+    df.loc[art_test.index, "split_artist"] = "test"
+    df.loc[photo_train.index, "split_artist"] = "train"
+    df.loc[photo_val.index, "split_artist"] = "val"
+    df.loc[photo_test.index, "split_artist"] = "test"
+
+    artist_split_counts = (
+        df[df["class_name"] == "art"]
+        .groupby("artist")["split_artist"]
+        .nunique()
+    )
+    leaking_artists = artist_split_counts[artist_split_counts > 1]
+
+    if not leaking_artists.empty:
+        raise ValueError(
+            "Artist leakage across splits detected: "
+            f"{leaking_artists.head(5).index.tolist()}"
+        )
+
+    return df
 
 def validate_manifest(df: pd.DataFrame) -> None:
     required_columns = {
@@ -197,6 +286,7 @@ def validate_manifest(df: pd.DataFrame) -> None:
         "split_random",
         "split_cross_a",
         "split_cross_b",
+        "split_artist",    
     }
 
     missing_columns = required_columns - set(df.columns)
@@ -251,6 +341,7 @@ def validate_manifest(df: pd.DataFrame) -> None:
         "split_random",
         "split_cross_a",
         "split_cross_b",
+        "split_artist",   
     ]
 
     for split_column in split_columns:
@@ -366,6 +457,7 @@ def build_manifest() -> pd.DataFrame:
 
     df = assign_random_split(df)
     df = assign_cross_splits(df)
+    df = assign_artist_split(df)
 
     df = df.sample(
         frac=1.0,
