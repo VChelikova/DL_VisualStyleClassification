@@ -2,3 +2,4 @@ experiment,model,split_column,image_size,batch_size,train_size,val_size,test_siz
 cnn_scratch_random,CNN from scratch,split_random,224,8,28000,6000,6000,8,0.239019,0.9043,0.9706,0.9066,0.9043,0.9042,2825,175,399,2601
 cnn_scratch_cross_a,CNN from scratch,split_cross_a,224,8,16000,4000,20000,7,7.044318,0.09,0.0338,0.09,0.09,0.09,880,9120,9080,920
 cnn_scratch_cross_b,CNN from scratch,split_cross_b,224,8,16000,4000,20000,8,5.0838,0.1543,0.0551,0.1303,0.1543,0.1404,270,9730,7184,2816
+cnn_scratch_artist,CNN from scratch,split_artist,224,8,27908,5933,6159,8,0.253471,0.8974,0.9698,0.9032,0.8959,0.8967,2512,488,144,3015
