@@ -1,0 +1,45 @@
+experiment,target,split_column,model,feature,importance
+Metadata-only art/photo classification - random split,art_photo_label,split_random,Random Forest,log_file_size_kb,0.5019199035792901
+Metadata-only art/photo classification - random split,art_photo_label,split_random,Random Forest,file_size_kb,0.49808009642071
+Metadata-only art/photo classification - random split,art_photo_label,split_random,Random Forest,width,0.0
+Metadata-only art/photo classification - random split,art_photo_label,split_random,Random Forest,aspect_ratio,0.0
+Metadata-only art/photo classification - random split,art_photo_label,split_random,Random Forest,height,0.0
+Metadata-only art/photo classification - random split,art_photo_label,split_random,Random Forest,megapixels,0.0
+Metadata-only art/photo classification - random split,art_photo_label,split_random,Random Forest,channels,0.0
+Metadata-only art/photo classification - random split,art_photo_label,split_random,Random Forest,is_landscape,0.0
+Metadata-only art/photo classification - random split,art_photo_label,split_random,Random Forest,is_portrait,0.0
+Metadata-only art/photo classification - random split,art_photo_label,split_random,Random Forest,is_square,0.0
+Metadata-only art/photo classification - random split,art_photo_label,split_random,Random Forest,file_extension_jpg,0.0
+Metadata-only art/photo classification - cross A,art_photo_label,split_cross_a,Random Forest,log_file_size_kb,0.5034248496642263
+Metadata-only art/photo classification - cross A,art_photo_label,split_cross_a,Random Forest,file_size_kb,0.49657515033577376
+Metadata-only art/photo classification - cross A,art_photo_label,split_cross_a,Random Forest,width,0.0
+Metadata-only art/photo classification - cross A,art_photo_label,split_cross_a,Random Forest,aspect_ratio,0.0
+Metadata-only art/photo classification - cross A,art_photo_label,split_cross_a,Random Forest,height,0.0
+Metadata-only art/photo classification - cross A,art_photo_label,split_cross_a,Random Forest,megapixels,0.0
+Metadata-only art/photo classification - cross A,art_photo_label,split_cross_a,Random Forest,channels,0.0
+Metadata-only art/photo classification - cross A,art_photo_label,split_cross_a,Random Forest,is_landscape,0.0
+Metadata-only art/photo classification - cross A,art_photo_label,split_cross_a,Random Forest,is_portrait,0.0
+Metadata-only art/photo classification - cross A,art_photo_label,split_cross_a,Random Forest,is_square,0.0
+Metadata-only art/photo classification - cross A,art_photo_label,split_cross_a,Random Forest,file_extension_jpg,0.0
+Metadata-only art/photo classification - cross B,art_photo_label,split_cross_b,Random Forest,log_file_size_kb,0.5008217920523826
+Metadata-only art/photo classification - cross B,art_photo_label,split_cross_b,Random Forest,file_size_kb,0.4991782079476174
+Metadata-only art/photo classification - cross B,art_photo_label,split_cross_b,Random Forest,width,0.0
+Metadata-only art/photo classification - cross B,art_photo_label,split_cross_b,Random Forest,aspect_ratio,0.0
+Metadata-only art/photo classification - cross B,art_photo_label,split_cross_b,Random Forest,height,0.0
+Metadata-only art/photo classification - cross B,art_photo_label,split_cross_b,Random Forest,megapixels,0.0
+Metadata-only art/photo classification - cross B,art_photo_label,split_cross_b,Random Forest,channels,0.0
+Metadata-only art/photo classification - cross B,art_photo_label,split_cross_b,Random Forest,is_landscape,0.0
+Metadata-only art/photo classification - cross B,art_photo_label,split_cross_b,Random Forest,is_portrait,0.0
+Metadata-only art/photo classification - cross B,art_photo_label,split_cross_b,Random Forest,is_square,0.0
+Metadata-only art/photo classification - cross B,art_photo_label,split_cross_b,Random Forest,file_extension_jpg,0.0
+Metadata-only source dataset classification,source_dataset,split_random,Random Forest,log_file_size_kb,0.5006798973222986
+Metadata-only source dataset classification,source_dataset,split_random,Random Forest,file_size_kb,0.4993201026777014
+Metadata-only source dataset classification,source_dataset,split_random,Random Forest,width,0.0
+Metadata-only source dataset classification,source_dataset,split_random,Random Forest,aspect_ratio,0.0
+Metadata-only source dataset classification,source_dataset,split_random,Random Forest,height,0.0
+Metadata-only source dataset classification,source_dataset,split_random,Random Forest,megapixels,0.0
+Metadata-only source dataset classification,source_dataset,split_random,Random Forest,channels,0.0
+Metadata-only source dataset classification,source_dataset,split_random,Random Forest,is_landscape,0.0
+Metadata-only source dataset classification,source_dataset,split_random,Random Forest,is_portrait,0.0
+Metadata-only source dataset classification,source_dataset,split_random,Random Forest,is_square,0.0
+Metadata-only source dataset classification,source_dataset,split_random,Random Forest,file_extension_jpg,0.0

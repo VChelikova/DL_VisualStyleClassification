@@ -1,0 +1,9 @@
+experiment,target,split_column,model,train_size,test_size,accuracy,auc,precision_macro,recall_macro,f1_macro
+Metadata-only art/photo classification - random split,art_photo_label,split_random,Dummy Classifier,28000,6000,0.5,0.5,0.25,0.5,0.3333
+Metadata-only art/photo classification - random split,art_photo_label,split_random,Random Forest,28000,6000,0.5303,0.5469,0.5303,0.5303,0.5303
+Metadata-only art/photo classification - cross A,art_photo_label,split_cross_a,Dummy Classifier,16000,20000,0.5,0.5,0.25,0.5,0.3333
+Metadata-only art/photo classification - cross A,art_photo_label,split_cross_a,Random Forest,16000,20000,0.5278,0.5402,0.5281,0.5277,0.5264
+Metadata-only art/photo classification - cross B,art_photo_label,split_cross_b,Dummy Classifier,16000,20000,0.5,0.5,0.25,0.5,0.3333
+Metadata-only art/photo classification - cross B,art_photo_label,split_cross_b,Random Forest,16000,20000,0.5304,0.5498,0.5306,0.5304,0.5299
+Metadata-only source dataset classification,source_dataset,split_random,Dummy Classifier,28000,6000,0.25,0.5,0.0625,0.25,0.1
+Metadata-only source dataset classification,source_dataset,split_random,Random Forest,28000,6000,0.277,0.5404,0.2768,0.277,0.2769
