@@ -83,7 +83,7 @@ PROJECT_ROOT = find_project_root()
 PROCESSED_DIR = PROJECT_ROOT / "data" / "processed"
 MODELS_DIR = PROJECT_ROOT / "models"
 
-MANIFEST_PATH = PROCESSED_DIR / "dataset_manifest.csv"
+MANIFEST_PATH = PROCESSED_DIR / "dataset_manifest_standardized.csv"
 
 RESULTS_OUTPUT_PATH = PROCESSED_DIR / "cnn_scratch_results.csv"
 HISTORY_OUTPUT_PATH = PROCESSED_DIR / "cnn_scratch_history.csv"
@@ -118,7 +118,7 @@ PROJECT_TRAIN_ROWS_PER_GROUP = 2500
 PROJECT_VAL_ROWS_PER_GROUP = 750
 PROJECT_TEST_ROWS_PER_GROUP = 750
 
-ACTIVE_EXPERIMENT_NAMES = {"cnn_scratch_artist"}
+ACTIVE_EXPERIMENT_NAMES = {"cnn_std_cross_b", "cnn_std_artist"}
 
 REPLACE_EXISTING_EXPERIMENT_ROWS = True
 
@@ -149,6 +149,26 @@ EXPERIMENTS = [
         "experiment": "cnn_scratch_artist",
         "split_column": "split_artist",
         "checkpoint_name": "cnn_scratch_artist_best.pt",
+    },
+    {
+        "experiment": "cnn_std_random",
+        "split_column": "split_random",
+        "checkpoint_name": "cnn_std_random_best.pt",
+    },
+    {
+        "experiment": "cnn_std_cross_a",
+        "split_column": "split_cross_a",
+        "checkpoint_name": "cnn_std_cross_a_best.pt",
+    },
+    {
+        "experiment": "cnn_std_cross_b",
+        "split_column": "split_cross_b",
+        "checkpoint_name": "cnn_std_cross_b_best.pt",
+    },
+    {
+        "experiment": "cnn_std_artist",
+        "split_column": "split_artist",
+        "checkpoint_name": "cnn_std_artist_best.pt",
     },
 ]
 
